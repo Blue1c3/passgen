@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PassGen</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Welcome to PassGen!</h1>
-  <p>This is a simple website hosted on GitHub Pages.</p>
+  <div class="container">
+    <h1>PASSGEN</h1>
+
+    <div class="output" id="password">click generate</div>
+
+    <label>
+      Length:
+      <input type="number" id="length" min="6" max="64" value="16" />
+    </label>
+
+    <div class="options">
+      <label><input type="checkbox" id="lower" checked /> a–z</label>
+      <label><input type="checkbox" id="upper" checked /> A–Z</label>
+      <label><input type="checkbox" id="numbers" checked /> 0–9</label>
+      <label><input type="checkbox" id="symbols" /> !@#$</label>
+    </div>
+
+    <button id="generate">GENERATE</button>
+    <button id="copy">COPY</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
