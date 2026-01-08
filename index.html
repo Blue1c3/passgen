@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PassGen Terminal</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PassGen Terminal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="terminal">
-    <h1>PASSGEN</h1>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Main Page</a></li>
+        <li><a href="#">Password Generator</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="output" id="password">click generate</div>
+  <main>
+    <div class="terminal">
+      <h1>PassGen</h1>
 
-    <div class="controls">
-      <label>
-        Length:
-        <input type="number" id="length" min="6" max="64" value="16" />
-      </label>
-
-      <div class="options">
-        <label><input type="checkbox" id="lower" checked /> a–z</label>
-        <label><input type="checkbox" id="upper" checked /> A–Z</label>
-        <label><input type="checkbox" id="numbers" checked /> 0–9</label>
-        <label><input type="checkbox" id="symbols" /> !@#$</label>
+      <div class="output-container">
+        <input type="text" id="password" readonly value="Click button">
+        <button id="copy" title="Copy password">📋</button>
       </div>
+
+      <div class="controls">
+        <label>
+          Length:
+          <input type="number" id="length" min="6" max="64" value="16"/>
+        </label>
+
+        <div class="options">
+          <label><input type="checkbox" id="lower" checked /> a–z</label>
+          <label><input type="checkbox" id="upper" checked /> A–Z</label>
+          <label><input type="checkbox" id="numbers" checked /> 0–9</label>
+          <label><input type="checkbox" id="symbols" /> !@#$</label>
+        </div>
+      </div>
+
+      <button id="generate" class="circle-btn" title="Generate password">⟳</button>
     </div>
+  </main>
 
-    <button id="generate">GENERATE</button>
-    <button id="copy">COPY</button>
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
