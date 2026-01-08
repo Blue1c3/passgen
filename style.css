@@ -3,34 +3,42 @@
 }
 
 body {
-  background: #0b0f14;
+  background: #0d0f12; /* чуть светлее черного */
   color: #00f7ff;
   font-family: "Courier New", monospace;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
 }
 
 .container {
-  width: 320px;
-  border: 1px solid #00f7ff33;
-  padding: 20px;
+  width: 350px;
+  padding: 25px;
+  background: #101215;
+  border: 2px solid #00f7ff;
+  border-radius: 6px;
   text-align: center;
-  background: #05080c;
+  box-shadow: 0 0 20px #00f7ff44;
 }
 
 h1 {
   margin-bottom: 20px;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
+  font-size: 28px;
+  text-shadow: 0 0 6px #00f7ff;
 }
 
 .output {
   background: #000;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 15px;
   word-break: break-all;
-  border: 1px solid #00f7ff55;
+  border: 2px solid #00f7ff;
+  border-radius: 4px;
+  font-size: 18px;
+  text-shadow: 0 0 3px #00f7ff;
 }
 
 label {
@@ -50,11 +58,15 @@ button {
   margin-top: 8px;
   background: transparent;
   color: #00f7ff;
-  border: 1px solid #00f7ff;
+  border: 2px solid #00f7ff;
+  border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 button:hover {
   background: #00f7ff;
-  color: #000;
+  color: #0d0f12;
+  transition: 0.2s;
 }
