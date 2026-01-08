@@ -1,6 +1,14 @@
 const output = document.getElementById("password");
 const lengthInput = document.getElementById("length");
 
+const lower = document.getElementById("lower");
+const upper = document.getElementById("upper");
+const numbers = document.getElementById("numbers");
+const symbols = document.getElementById("symbols");
+
+const generate = document.getElementById("generate");
+const copy = document.getElementById("copy");
+
 const options = {
   lower: "abcdefghijklmnopqrstuvwxyz",
   upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -16,7 +24,7 @@ function generatePassword() {
   if (symbols.checked) chars += options.symbols;
 
   if (!chars) {
-    output.textContent = "select options";
+    output.value = "select options";
     return;
   }
 
@@ -25,14 +33,15 @@ function generatePassword() {
     password += chars[Math.floor(Math.random() * chars.length)];
   }
 
-  output.textContent = password;
+  output.value = password;
 }
 
 generate.addEventListener("click", generatePassword);
+
 copy.addEventListener("click", () => {
-  navigator.clipboard.writeText(output.textContent);
+  navigator.clipboard.writeText(output.value);
 });
 
-document.querySelectorAll("input").forEach(el =>
-  el.addEventListener("change", generatePassword)
-);
+document.querySelectorAll("input").forEach(el => {
+  el.addEventListener("change", generatePassword);
+});
