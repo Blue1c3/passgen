@@ -1,50 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PassGen Terminal</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#">Main Page</a></li>
-        <li><a href="#">Password Generator</a></li>
-        <li><a href="todo.html">To-Do</a></li>
-      </ul>
-    </nav>
-  </header>
+    <div class="container">
+        <header class="header">
+            <h1 class="header__title">Password Generator</h1>
+            <p class="header__subtitle">Create strong, secure passwords instantly</p>
+        </header>
 
-  <main>
-    <div class="terminal">
-      <h1>PassGen</h1>
+        <main class="main">
+            <div class="generator">
+                <div class="output">
+                    <input 
+                        type="text" 
+                        id="passwordOutput" 
+                        class="output__field" 
+                        readonly
+                        placeholder="Click generate to create password"
+                        aria-label="Generated password"
+                    >
+                    <button 
+                        type="button" 
+                        id="copyBtn" 
+                        class="output__copy"
+                        aria-label="Copy password to clipboard"
+                        disabled
+                    >
+                        <svg class="copy-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </button>
+                </div>
 
-      <div class="output-container">
-        <input type="text" id="password" readonly value="Click button">
-        <button id="copy" title="Copy password">📋</button>
-      </div>
+                <div class="controls">
+                    <div class="control-group">
+                        <div class="control-group__header">
+                            <label for="length" class="control-group__label">Password Length</label>
+                            <span class="control-group__value" id="lengthValue">16</span>
+                        </div>
+                        <input 
+                            type="range" 
+                            id="length" 
+                            class="slider"
+                            min="8" 
+                            max="64" 
+                            value="16"
+                            aria-label="Password length"
+                        >
+                    </div>
 
-      <div class="controls">
-        <label>
-          Length:
-          <input type="number" id="length" min="6" max="64" value="16"/>
-        </label>
+                    <div class="control-group">
+                        <h2 class="control-group__title">Character Types</h2>
+                        <div class="options">
+                            <label class="option">
+                                <input type="checkbox" id="uppercase" checked>
+                                <span class="option__label">Uppercase (A-Z)</span>
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" id="lowercase" checked>
+                                <span class="option__label">Lowercase (a-z)</span>
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" id="numbers" checked>
+                                <span class="option__label">Numbers (0-9)</span>
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" id="symbols" checked>
+                                <span class="option__label">Symbols (!@#$%...)</span>
+                            </label>
+                        </div>
+                        <div class="warning" id="warning">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            <span>Select at least one character type</span>
+                        </div>
+                    </div>
 
-        <div class="options">
-          <label><input type="checkbox" id="lower" checked /> a–z</label>
-          <label><input type="checkbox" id="upper" checked /> A–Z</label>
-          <label><input type="checkbox" id="numbers" checked /> 0–9</label>
-          <label><input type="checkbox" id="symbols" /> !@#$</label>
-        </div>
-      </div>
+                    <div class="control-group">
+                        <h2 class="control-group__title">Advanced Options</h2>
+                        <div class="options">
+                            <label class="option">
+                                <input type="checkbox" id="excludeSimilar">
+                                <span class="option__label">Exclude similar (i, l, 1, L, o, 0, O)</span>
+                            </label>
+                            <label class="option">
+                                <input type="checkbox" id="excludeAmbiguous">
+                                <span class="option__label">Exclude ambiguous ({ } [ ] ( ) / \ ' " ` ~ , ; : . < >)</span>
+                            </label>
+                        </div>
+                    </div>
 
-      <button id="generate" class="circle-btn" title="Generate password">⟳</button>
+                    <button type="button" id="generateBtn" class="btn btn--primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <polyline points="1 20 1 14 7 14"></polyline>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                        </svg>
+                        Generate Password
+                    </button>
+                </div>
+
+                <div class="strength" id="strength">
+                    <div class="strength__label">Password Strength:</div>
+                    <div class="strength__indicator">
+                        <div class="strength__bar" id="strengthBar"></div>
+                    </div>
+                    <div class="strength__text" id="strengthText">-</div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">All passwords are generated locally in your browser. Nothing is stored or transmitted.</p>
+        </footer>
     </div>
-  </main>
 
-<script src="script.js"></script>
+    <div class="toast" id="toast">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>Password copied to clipboard</span>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
